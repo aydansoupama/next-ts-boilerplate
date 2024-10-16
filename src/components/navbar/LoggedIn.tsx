@@ -12,8 +12,8 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import { signOut } from "next-auth/react";
-import { signIn } from "@/lib/auth";
 
 export default function LoggedIn() {
     const { data: session, status } = useSession();
@@ -42,14 +42,21 @@ export default function LoggedIn() {
             <DropdownMenuTrigger>
                 <Avatar>
                     <AvatarImage src={session?.user?.image || undefined} />
-                    <AvatarFallback>{session?.user?.name?.charAt(0) || 'U'}</AvatarFallback>
+                    <AvatarFallback>
+                        {session?.user?.name
+                            ? session.user.name.split(' ').map(n => n[0]).join('').toUpperCase()
+                            : 'U'
+                        }
+                    </AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                    <Link href="/dashboard/settings">Settings</Link>
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onSelect={() => signOut()}>
                     Logout
