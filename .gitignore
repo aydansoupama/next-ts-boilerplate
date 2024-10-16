@@ -1,0 +1,57 @@
+# Dépendances
+/node_modules
+/.pnp
+.pnp.js
+
+# Tests
+/coverage
+
+# Next.js
+/.next/
+/out/
+
+# Production
+/build
+
+# Divers
+.DS_Store
+*.pem
+
+# Logs de débogage
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Fichiers d'environnement
+.env
+.env.*
+!.env.example
+
+# Base de données SQLite (si utilisée)
+*.db
+*.sqlite
+
+# Fichiers de sauvegarde de l'éditeur
+*~
+*.swp
+*.swo
+
+# Dossiers de cache
+.cache
+.npm
+
+# Fichiers de configuration spécifiques à l'IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Fichiers de build
+dist/
