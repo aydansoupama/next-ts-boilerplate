@@ -35,11 +35,10 @@ export const authOptions: NextAuthConfig = {
         async jwt({ token, user, trigger, session }) {
             if (user) {
                 token.id = user.id;
+                token.name = user.name;
+                token.email = user.email;
             }
-            if (trigger === "update" && session?.name) {
-                token.name = session.name;
-                token.email = session.email;
-            }
+            if (trigger === "update" && session?.name) token.name = session.name;
             return token;
         },
         async session({ session, token }): Promise<Session> {
